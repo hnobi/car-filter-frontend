@@ -1,5 +1,9 @@
 .App {
-  text-align: center;
+  background-color: #dcdcdc59;
+  width: 90%;
+  margin: 10px auto;
+  height: 100vh;
+  padding-top: 50px;
 }
 
 .App-logo {
@@ -13,26 +17,68 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
+  width: 85%;
+  background-color: #fff;
+  margin: 0 auto;
+  height: 300px;
+  border-radius: 20px;
+  box-shadow: 0 7px 6px -9px black;
+  padding: 10px 45px;
+  overflow: scroll;
+}
+
+.filter {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: column;
+  font-weight: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.filter h2 {
+  font-size: 40px;
+  /* margin-top: 5px; */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.filter h3 {
+  font-size: 30px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 600;
 }
+
+.filter p, .filter h3 {
+  margin-top: 0px;
+}
+
+.filter p {
+  padding: 5px 18px;
+  background-color: #8080804a;
+  border-radius: 50px;
+  font-size: 23px;
+  font-family: Roboto, system-ui, sans-serif;
+  font-weight: 400;
+  line-height: 154%;
+}
+
+.country_list {
+  display: flex;
+}
+
+.country_list p {
+  margin-right: 10px;
+}
+
+.dot {
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background-color: aqua;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.colors {
+  width: 500px;  
+}
+
+/* rgb(241, 241, 241) */
