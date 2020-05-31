@@ -2,8 +2,9 @@
   background-color: #dcdcdc59;
   width: 90%;
   margin: 10px auto;
-  height: 100vh;
+  height: auto;
   padding-top: 50px;
+  padding-bottom: 50px;
 }
 
 .App-logo {
@@ -27,6 +28,15 @@
   padding: 15px 45px;
   overflow: scroll;
   margin-bottom: 50px;
+}
+
+.carImg {
+  display: flex;
+  align-items: center;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .filter {
@@ -139,4 +149,20 @@ td, .email, .bio {
 
 .display-wrapper {
   display: flex;
+}
+
+.filter-icon {
+  display: flex;
+  align-items: center;
+  font-size: 45px;
+  width: 92%;
+  margin: -29px auto -5px auto;
+}
+
+.filter-icon img {
+  width: 40px;
+  margin-top: -3px;
+  margin-right: 10px;
+  box-shadow: none;
+ 
 }
