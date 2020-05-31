@@ -7,10 +7,12 @@ import {filterDateRequest, filterQueryRequest} from './../utils';
 export default class Filter extends Component {
   state = {
     carOwners: [],
+    loading: false,
   };
 
   handleFilterClick =  async (filter, value) => {
-    
+    this.setState({ loading: true });
+
 
     let result = ''
     switch (filter) {
@@ -22,7 +24,10 @@ export default class Filter extends Component {
       default:
         result = "";
     }
-    this.setState({carOwners: result.data.message})
+    if(result.status){
+    this.setState({ carOwners: result.data.message, loading: false });
+    }
+
 
   }
 handleDateClick = async() => {
@@ -34,7 +39,7 @@ handleDateClick = async() => {
   render() {
     const countryList = [
       "China",
-      "South African",
+      "South Africa",
       "France",
       "Mexico",
       "Japan",
@@ -57,6 +62,7 @@ handleDateClick = async() => {
 
     const { loading, carOwners } = this.state;
   console.log(loading, carOwners)
+
     return (
       <Fragment>
         <Card>
@@ -94,8 +100,14 @@ handleDateClick = async() => {
             </div>
           </div>
         </Card>
-        {carOwners.length > 0 &&
-          carOwners.map((carOwner) => <CarOwner carOwner={carOwner} />)}
+        {/* {carOwners.length > 0 &&
+          carOwners.map((carOwner) => <CarOwner carOwner={carOwner} />)} */}
+
+        {!loading ? (
+          carOwners.map((carOwner) => <CarOwner carOwner={carOwner} />)
+        ) : (
+          <h1> Loading...</h1>
+        )}
       </Fragment>
     );
   }
