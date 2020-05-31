@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import Card from './Card';
-
+import CarOwner from './CarOwner';
 
 
 export default class Filter extends Component {
@@ -23,22 +23,26 @@ export default class Filter extends Component {
       "Fuscia",
     ];
     return (
-      <Card>
-        <div className="filter">
-          <h2> 1990 - 2010</h2>
-          <h3>Male</h3>
-          <div className="country_list">
-            {countryList.map((country, index) => (
-              <p key={index}>{country}</p>
-            ))}
+      <Fragment>
+        <Card>
+          <div className="filter">
+            <h2> 1990 - 2010</h2>
+            <h3>Male</h3>
+            <div className="country_list">
+              {countryList.map((country, index) => (
+                <p key={index}>{country}</p>
+              ))}
+            </div>
+            <div className="colors">
+              {colors.map((color, index) => (
+                <span  key ={index} className="dot" style={{ backgroundColor: color }}>
+                </span>
+              ))}
+            </div>
           </div>
-          <div className='colors'>
-            {colors.map((color) => (
-              <span class="dot" style={{backgroundColor: color }}>{" "}</span>
-            ))}
-          </div>
-        </div>
-      </Card>
+        </Card>
+        <CarOwner/>
+      </Fragment>
     );
   }
 }

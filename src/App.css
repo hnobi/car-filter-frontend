@@ -21,11 +21,12 @@
   width: 85%;
   background-color: #fff;
   margin: 0 auto;
-  height: 300px;
+  min-height: 300px;
   border-radius: 20px;
   box-shadow: 0 7px 6px -9px black;
-  padding: 10px 45px;
+  padding: 15px 45px;
   overflow: scroll;
+  margin-bottom: 50px;
 }
 
 .filter {
@@ -37,7 +38,6 @@
 
 .filter h2 {
   font-size: 40px;
-  /* margin-top: 5px; */
 }
 
 .filter h3 {
@@ -78,7 +78,65 @@
 }
 
 .colors {
-  width: 500px;  
+  width: 500px;
 }
 
-/* rgb(241, 241, 241) */
+img {
+  width: 350px;
+  margin-top: 40px;
+  box-shadow: 0px -8px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.carOwnerInfo {
+  margin-left: 20px;
+  flex: 1;
+  font-weight: 600;
+}
+
+.carOwnerInfo h2 {
+  font-size: 35px;
+  padding-left: 20px;
+}
+
+.table1 {
+  border-collapse: collapse;
+  border-spacing: 10px;
+  letter-spacing: 1px;
+}
+
+.table2 {
+  padding: 0 20px;
+  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+.table2 td:not(:first-child) {
+  padding-left: 18px;
+}
+
+.table1 td:not(:last-child) {
+  border-right: 2px solid rgb(0, 0, 0);
+  padding: 0 20px;
+}
+
+td, .email, .bio {
+  font-size: 25px;
+}
+
+.table1 td:last-child {
+  padding-left: 20px;
+}
+
+.label {
+  color: #58575794;
+}
+
+.email, .bio {
+  letter-spacing: 3px;
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.display-wrapper {
+  display: flex;
+}
