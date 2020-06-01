@@ -1,4 +1,12 @@
 .App {
+  /* width: 90%;
+  margin: 10px auto;
+  height: auto;
+  padding-top: 50px;
+  padding-bottom: 50px; */
+}
+
+.wrapper {
   background-color: #dcdcdc59;
   width: 90%;
   margin: 10px auto;
@@ -19,7 +27,7 @@
 }
 
 .card {
-  width: 85%;
+  width: 70%;
   background-color: #fff;
   margin: 0 auto;
   min-height: 300px;
@@ -87,10 +95,6 @@
   margin-right: 10px;
 }
 
-.colors {
-  width: 500px;
-}
-
 img {
   width: 350px;
   margin-top: 40px;
@@ -130,7 +134,7 @@ img {
 }
 
 td, .email, .bio {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .table1 td:last-child {
@@ -164,5 +168,25 @@ td, .email, .bio {
   margin-top: -3px;
   margin-right: 10px;
   box-shadow: none;
- 
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+
+.link .card:hover {
+  transform: scale(1.05);
+  transition: .6s cubic-bezier(.25, .45, .45, .95), -webkit-transform .6s cubic-bezier(.25, .45, .45, .95)
+}
+
+.no-data {
+  text-align: center;
+  font-size: 30px;
+  color: rgb(78, 76, 76);
+}
+
+.home {
+  cursor: pointer;
 }

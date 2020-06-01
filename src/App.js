@@ -1,16 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 import Filter from './Components/Filter';
+import CarOwners from "./Components/CarOwner";
+
+
 import './App.css';
-import filter from './Components/filter.png'
 
 function App() {
   return (
     <div className="App">
-      <div className="filter-icon">
-        <img src={filter} alt="filter" />
-        <p> Filter</p>
-      </div>
-      <Filter />
+
+      <Router>
+        <Switch>
+          <Route path="/car_owners/filter/:id" component={CarOwners} />
+          <Route path="/car_owners/filter">
+            <Filter />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
