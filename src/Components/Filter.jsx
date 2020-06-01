@@ -1,112 +1,66 @@
 import React, { Component, Fragment } from "react";
 import Card from "./Card";
-import CarOwner from "./CarOwner";
-import {filterDateRequest, filterQueryRequest} from './../utils';
-
+import { fetchQueryData, capitalizeFirstLetter } from "./../utils";
+import Logo from "./Logo";
+import filterImg from "./filter.png";
+import { Link } from "react-router-dom";
+import Loader from './Loader';
 
 export default class Filter extends Component {
   state = {
-    carOwners: [],
-    loading: false,
+    loading: true,
+    queryDatas: [],
   };
 
-  handleFilterClick =  async (filter, value) => {
-    this.setState({ loading: true });
-
-
-    let result = ''
-    switch (filter) {
-      case "color":
-      case "gender":
-      case "country":
-        result = await filterQueryRequest(filter, value);
-      break;
-      default:
-        result = "";
+  async componentDidMount() {
+    const queryDatas = await fetchQueryData();
+    if (queryDatas) {
+      this.setState({ loading: false, queryDatas: queryDatas.data });
     }
-    if(result.status){
-    this.setState({ carOwners: result.data.message, loading: false });
-    }
-
-
   }
-handleDateClick = async() => {
-    const result = await filterDateRequest();
-    this.setState({ carOwners: result.data.message });
-}
-
 
   render() {
-    const countryList = [
-      "China",
-      "South Africa",
-      "France",
-      "Mexico",
-      "Japan",
-      "Estonia",
-      "Colombia",
-    ];
-    const colors = [
-      "Aquamarine",
-      "Goldenrod",
-      "Pink",
-      "Red",
-      "Green",
-      "Indigo",
-      "Khaki",
-      "Puce",
-      "Yellow",
-      "Turquoise",
-      "Fuscia",
-    ];
-
-    const { loading, carOwners } = this.state;
-  console.log(loading, carOwners)
-
+    const { loading, queryDatas } = this.state;
     return (
       <Fragment>
-        <Card>
-          <div className="filter">
-            <h2 onClick={this.handleDateClick} className="pointer">
-              {" "}
-              1990 - 2010
-            </h2>
-            <h3
-              className="pointer"
-              onClick={() => this.handleFilterClick("gender", "Male")}
-            >
-              Male
-            </h3>
-            <div className="country_list">
-              {countryList.map((country, index) => (
-                <p
-                  key={index}
-                  className="pointer"
-                  onClick={() => this.handleFilterClick("country", country)}
-                >
-                  {country}
-                </p>
-              ))}
-            </div>
-            <div className="colors">
-              {colors.map((color, index) => (
-                <span
-                  key={index}
-                  onClick={() => this.handleFilterClick("color", color)}
-                  className="dot pointer"
-                  style={{ backgroundColor: color }}
-                ></span>
-              ))}
-            </div>
-          </div>
-        </Card>
-        {/* {carOwners.length > 0 &&
-          carOwners.map((carOwner) => <CarOwner carOwner={carOwner} />)} */}
-
         {!loading ? (
-          carOwners.map((carOwner) => <CarOwner carOwner={carOwner} />)
+          <div className="wrapper">
+            <Logo text="Filter" image={filterImg} />
+            {queryDatas &&
+              queryDatas.map((queryData, index) => (
+                <Link
+                  key={index}
+                  className="link"
+                  to={`/filter/${queryData.id}`}
+                >
+                  <Card>
+                    <div className="filter">
+                      <h2>
+                        {" "}
+                        {queryData.start_year} - {queryData.end_year}{" "}
+                      </h2>
+                      <h3>{capitalizeFirstLetter(queryData.gender)}</h3>
+                      <div className="country_list">
+                        {queryData.countries.map((country, i) => (
+                          <p key={i}> {country} </p>
+                        ))}
+                      </div>
+                      <div className="colors">
+                        {queryData.colors.map((color, i) => (
+                          <span
+                            key={i}
+                            className="dot"
+                            style={{ backgroundColor: color }}
+                          ></span>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                </Link>
+              ))}
+          </div>
         ) : (
-          <h1> Loading...</h1>
+          <Loader />
         )}
       </Fragment>
     );

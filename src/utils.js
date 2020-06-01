@@ -1,11 +1,8 @@
-import Axios from "axios";
+import axios from "axios";
 
-export const filterQueryRequest = (querykey, value) => {
-  return Axios.get(`https://carownersapp.herokuapp.com/cars_owners?${querykey}=${value}&limit=10`);
-}
+const proxyurl = "https://cors-anywhere.herokuapp.com/";
 
-export const filterDateRequest = () => {
-  return Axios.get(
-    `https://carownersapp.herokuapp.com/cars_owners?startDate=1990&endDate=2010&limit=10`
-  );
-};
+export const fetchFilteredCarOwner = (queryId) => axios.get(`https://carownersapp.herokuapp.com/cars_owners/${queryId}`);
+export const fetchQueryData = () => axios.get(`${proxyurl}https://ven10.co/assessment/filter.json`);
+    
+export const capitalizeFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
